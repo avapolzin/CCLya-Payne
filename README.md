@@ -6,7 +6,7 @@ Tools for interpolating spectral models with neural networks.
 
 Clone this repository and run code from the base directory.
 
-python setup.py install
+  python setup.py install
 
 The tutorial shows some simple use cases.
 
