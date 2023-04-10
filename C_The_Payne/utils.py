@@ -30,7 +30,7 @@ def load_wavelength_array():
     '''
     read in the default wavelength grid onto which we interpolate all spectra
     '''
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/apogee_wavelength.npz')
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/apogee_wavelength.npz') # MODIFY THIS - FLAG=0 MEANS PASS ## SPECIFY FOR ALL INSTRUMENTS
     tmp = np.load(path)
     wavelength = tmp['wavelength']
     tmp.close()
@@ -43,9 +43,9 @@ def load_apogee_mask():
     The mask is made by comparing the tuned Kurucz models to the observed spectra from Arcturus
     and the Sun from APOGEE. We mask out pixels that show more than 2% of deviations.
     '''
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/apogee_mask.npz')
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/apogee_mask.npz') # SPECIFY FOR EACH INSTRUMENTS
     tmp = np.load(path)
-    mask = tmp['apogee_mask']
+    mask = tmp['apogee_mask'] # MODIFY
     tmp.close()
     return mask
 
@@ -54,7 +54,7 @@ def load_cannon_contpixels():
     '''
     read in the default list of APOGEE pixels for continuum fitting.
     '''
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/cannon_cont_pixels_apogee.npz')
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/cannon_cont_pixels_apogee.npz') # MODIFY PIXELS
     tmp = np.load(path)
     pixels_cannon = tmp['pixels_cannon']
     tmp.close()
@@ -69,7 +69,7 @@ def load_training_data():
     In practice, more training spectra will be better. The default
     neural network was trained using 12000 training spectra.
     '''
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/kurucz_training_spectra.npz')
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/kurucz_training_spectra.npz') # MODIFY THIS
     tmp = np.load(path)
     training_labels = (tmp["labels"].T)[:800,:]
     training_spectra = tmp["spectra"][:800,:]
@@ -79,7 +79,7 @@ def load_training_data():
     return training_labels, training_spectra, validation_labels, validation_spectra
 
 
-def doppler_shift(wavelength, flux, dv):
+def doppler_shift(wavelength, flux, dv): # PROBABLY DON'T NEED THIS - BUT CHECK ## CHECK HOW ALL FILES (MASK, CONTINUUM, WAVELENGTH) ARE MODIFIED BY THIS
     '''
     dv is in km/s
     We use the convention where a positive dv means the object is moving away.
@@ -95,7 +95,7 @@ def doppler_shift(wavelength, flux, dv):
     return new_flux
 
 
-def get_apogee_continuum(spec, spec_err = None, cont_pixels = None):
+def get_apogee_continuum(spec, spec_err = None, cont_pixels = None): # CHECK HOW THIS IS DIFFERENT WITH VELOCITY-SPACE SPECTRA VS. WHAT THE PAYNE USES
     '''
     continuum normalize spectrum.
     pixels with large uncertainty are weighted less in the fit.
