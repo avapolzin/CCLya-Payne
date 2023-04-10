@@ -26,13 +26,13 @@ def read_in_neural_network():
     return NN_coeffs
 
 
-def load_wavelength_array():
+def load_wavelength_array(): # CHANGE FROM WAVELENGTH TO VELOCITY
     '''
     read in the default wavelength grid onto which we interpolate all spectra
     '''
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/apogee_wavelength.npz') # MODIFY THIS - FLAG=0 MEANS PASS ## SPECIFY FOR ALL INSTRUMENTS
     tmp = np.load(path)
-    wavelength = tmp['wavelength']
+    wavelength = tmp['wavelength'] # VELOCITY SPACE
     tmp.close()
     return wavelength
 
@@ -45,7 +45,7 @@ def load_apogee_mask():
     '''
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/apogee_mask.npz') # SPECIFY FOR EACH INSTRUMENTS
     tmp = np.load(path)
-    mask = tmp['apogee_mask'] # MODIFY
+    mask = tmp['apogee_mask'] # MODIFY ## IN VELOCITY SPACE
     tmp.close()
     return mask
 
@@ -92,7 +92,7 @@ def doppler_shift(wavelength, flux, dv): # PROBABLY DON'T NEED THIS - BUT CHECK 
     doppler_factor = np.sqrt((1 - dv/c)/(1 + dv/c))
     new_wavelength = wavelength * doppler_factor
     new_flux = np.interp(new_wavelength, wavelength, flux)
-    return new_flux
+    return new_flux # IF I KEEP VELOCITY-SPACE THEN DON'T USE THIS (OR AT LEAST MODIFY IT)
 
 
 def get_apogee_continuum(spec, spec_err = None, cont_pixels = None): # CHECK HOW THIS IS DIFFERENT WITH VELOCITY-SPACE SPECTRA VS. WHAT THE PAYNE USES
@@ -104,7 +104,7 @@ def get_apogee_continuum(spec, spec_err = None, cont_pixels = None): # CHECK HOW
         cont_pixels = load_cannon_contpixels()
     cont = np.empty_like(spec)
 
-    wavelength = load_wavelength_array()
+    wavelength = load_wavelength_array() # VELOCITY SPACE
 
     deg = 4
 
@@ -113,9 +113,9 @@ def get_apogee_continuum(spec, spec_err = None, cont_pixels = None): # CHECK HOW
         spec_err = np.zeros(spec.shape[0]) + 0.0001
 
     # Rescale wavelengths
-    bluewav = 2*np.arange(2920)/2919 - 1
-    greenwav = 2*np.arange(2400)/2399 - 1
-    redwav = 2*np.arange(1894)/1893 - 1
+    bluewav = 2*np.arange(2920)/2919 - 1 # VELOCITY!!
+    greenwav = 2*np.arange(2400)/2399 - 1 # VELOCITY!!
+    redwav = 2*np.arange(1894)/1893 - 1 # VELOCITY!!
 
     blue_pixels= cont_pixels[:2920]
     green_pixels= cont_pixels[2920:5320]
@@ -123,16 +123,16 @@ def get_apogee_continuum(spec, spec_err = None, cont_pixels = None): # CHECK HOW
 
     # blue
     cont[:2920]= _fit_cannonpixels(bluewav, spec[:2920], spec_err[:2920],
-                        deg, blue_pixels)
+                        deg, blue_pixels) # VELOCITY!!
     # green
     cont[2920:5320]= _fit_cannonpixels(greenwav, spec[2920:5320], spec_err[2920:5320],
-                        deg, green_pixels)
+                        deg, green_pixels) # VELOCITY!!
     # red
-    cont[5320:]= _fit_cannonpixels(redwav, spec[5320:], spec_err[5320:], deg, red_pixels)
+    cont[5320:]= _fit_cannonpixels(redwav, spec[5320:], spec_err[5320:], deg, red_pixels) # VELOCITY!!
     return cont
 
 
-def _fit_cannonpixels(wav, spec, specerr, deg, cont_pixels):
+def _fit_cannonpixels(wav, spec, specerr, deg, cont_pixels): # VELOCITY!!
     '''
     Fit the continuum to a set of continuum pixels
     helper function for get_apogee_continuum()
