@@ -26,7 +26,7 @@ def read_in_neural_network():
     return NN_coeffs
 
 
-def load_wavelength_array(): # CHANGE FROM WAVELENGTH TO VELOCITY
+def load_wavelength_array(): ## NO NEED TO CHANGE THIS FUNCTION!
     '''
     read in the default wavelength grid onto which we interpolate all spectra
     '''
@@ -37,7 +37,7 @@ def load_wavelength_array(): # CHANGE FROM WAVELENGTH TO VELOCITY
     return wavelength
 
 
-def load_apogee_mask():
+def load_apogee_mask(): ## NEED SPECIFIC MASK FOR EACH INSTRUMENT
     '''
     read in the pixel mask with which we will omit bad pixels during spectral fitting
     The mask is made by comparing the tuned Kurucz models to the observed spectra from Arcturus
@@ -50,7 +50,7 @@ def load_apogee_mask():
     return mask
 
 
-def load_cannon_contpixels():
+def load_cannon_contpixels(): ## MODIFY NUMBER OF PIXELS IN CONTINUUM FILE
     '''
     read in the default list of APOGEE pixels for continuum fitting.
     '''
@@ -61,7 +61,7 @@ def load_cannon_contpixels():
     return pixels_cannon
 
 
-def load_training_data():
+def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     '''
     read in the default Kurucz training spectra for APOGEE
 
@@ -79,7 +79,9 @@ def load_training_data():
     return training_labels, training_spectra, validation_labels, validation_spectra
 
 
-def doppler_shift(wavelength, flux, dv): # PROBABLY DON'T NEED THIS - BUT CHECK ## CHECK HOW ALL FILES (MASK, CONTINUUM, WAVELENGTH) ARE MODIFIED BY THIS
+def doppler_shift(wavelength, flux, dv): ## COMMENT THIS FUNCTION OUT
+    
+    
     '''
     dv is in km/s
     We use the convention where a positive dv means the object is moving away.
@@ -95,7 +97,10 @@ def doppler_shift(wavelength, flux, dv): # PROBABLY DON'T NEED THIS - BUT CHECK 
     return new_flux # IF I KEEP VELOCITY-SPACE THEN DON'T USE THIS (OR AT LEAST MODIFY IT)
 
 
-def get_apogee_continuum(spec, spec_err = None, cont_pixels = None): # CHECK HOW THIS IS DIFFERENT WITH VELOCITY-SPACE SPECTRA VS. WHAT THE PAYNE USES
+def get_apogee_continuum(spec, spec_err = None, cont_pixels = None):
+    ## CHECK HOW THIS IS DIFFERENT WITH VELOCITY-SPACE SPECTRA VS. WHAT THE PAYNE USES
+    ## REARRANGE THE BLUE, GREEN, RED CATEGORIES TO ONE CATEGORY FOR LY CONTINUUM
+    
     '''
     continuum normalize spectrum.
     pixels with large uncertainty are weighted less in the fit.
@@ -133,6 +138,8 @@ def get_apogee_continuum(spec, spec_err = None, cont_pixels = None): # CHECK HOW
 
 
 def _fit_cannonpixels(wav, spec, specerr, deg, cont_pixels): # VELOCITY!!
+    ## "_fit_cannonpixels()" DOES NOT NEED WAVELENGTH INSTEAD OF VELOCITY - JUST TAKES Y-VALUES AND USES THE INDICES OF THE PIXELS
+    
     '''
     Fit the continuum to a set of continuum pixels
     helper function for get_apogee_continuum()
