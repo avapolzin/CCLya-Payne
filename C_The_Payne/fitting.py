@@ -7,6 +7,9 @@ from . import utils
 
 
 def fit_normalized_spectrum_single_star_model(norm_spec, spec_err, NN_coeffs, wavelength, mask, p0 = None):
+    ## REMOVE DOPPLER SHIFT FUNCTION IN CODE
+    ## CURVEFIT USES AN EMPTY X-ARRAY SO WAVELENGTH VS. VEL IS NOT AN ISSUE
+    
     '''
     fit a single-star model to a single combined spectrum
 
