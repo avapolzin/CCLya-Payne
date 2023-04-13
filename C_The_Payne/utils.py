@@ -30,7 +30,7 @@ def load_wavelength_array(): ## NO NEED TO CHANGE THIS FUNCTION!
     '''
     read in the default wavelength grid onto which we interpolate all spectra
     '''
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/apogee_wavelength.npz') # MODIFY THIS - FLAG=0 MEANS PASS ## SPECIFY FOR ALL INSTRUMENTS
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_wavelength.npz') # MODIFY THIS - FLAG=0 MEANS PASS ## SPECIFY FOR ALL INSTRUMENTS
     tmp = np.load(path)
     wavelength = tmp['wavelength'] # VELOCITY SPACE
     tmp.close()
@@ -43,7 +43,7 @@ def load_apogee_mask(): ## NEED SPECIFIC MASK FOR EACH INSTRUMENT
     The mask is made by comparing the tuned Kurucz models to the observed spectra from Arcturus
     and the Sun from APOGEE. We mask out pixels that show more than 2% of deviations.
     '''
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/apogee_mask.npz') # SPECIFY FOR EACH INSTRUMENTS
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_mask.npz') # SPECIFY FOR EACH INSTRUMENTS
     tmp = np.load(path)
     mask = tmp['apogee_mask'] # MODIFY ## IN VELOCITY SPACE
     tmp.close()
@@ -52,9 +52,9 @@ def load_apogee_mask(): ## NEED SPECIFIC MASK FOR EACH INSTRUMENT
 
 def load_cannon_contpixels(): ## MODIFY NUMBER OF PIXELS IN CONTINUUM FILE
     '''
-    read in the default list of APOGEE pixels for continuum fitting.
+    read in the default list of TLAC pixels for continuum fitting.
     '''
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/cannon_cont_pixels_apogee.npz') # MODIFY PIXELS
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_cont_pixels.npz') # MODIFY PIXELS
     tmp = np.load(path)
     pixels_cannon = tmp['pixels_cannon']
     tmp.close()
@@ -69,7 +69,7 @@ def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     In practice, more training spectra will be better. The default
     neural network was trained using 12000 training spectra.
     '''
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/kurucz_training_spectra.npz') # MODIFY THIS
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') # MODIFY THIS
     tmp = np.load(path)
     training_labels = (tmp["labels"].T)[:800,:]
     training_spectra = tmp["spectra"][:800,:]
@@ -79,22 +79,22 @@ def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     return training_labels, training_spectra, validation_labels, validation_spectra
 
 
-def doppler_shift(wavelength, flux, dv): ## COMMENT THIS FUNCTION OUT
+# def doppler_shift(wavelength, flux, dv): ## COMMENT THIS FUNCTION OUT
     
     
-    '''
-    dv is in km/s
-    We use the convention where a positive dv means the object is moving away.
+#     '''
+#     dv is in km/s
+#     We use the convention where a positive dv means the object is moving away.
 
-    This linear interpolation is actually not that accurate, but is fine if you
-    only care about accuracy to the level of a few tenths of a km/s. If you care
-    about better accuracy, you can do better with spline interpolation.
-    '''
-    c = 2.99792458e5 # km/s
-    doppler_factor = np.sqrt((1 - dv/c)/(1 + dv/c))
-    new_wavelength = wavelength * doppler_factor
-    new_flux = np.interp(new_wavelength, wavelength, flux)
-    return new_flux # IF I KEEP VELOCITY-SPACE THEN DON'T USE THIS (OR AT LEAST MODIFY IT)
+#     This linear interpolation is actually not that accurate, but is fine if you
+#     only care about accuracy to the level of a few tenths of a km/s. If you care
+#     about better accuracy, you can do better with spline interpolation.
+#     '''
+#     c = 2.99792458e5 # km/s
+#     doppler_factor = np.sqrt((1 - dv/c)/(1 + dv/c))
+#     new_wavelength = wavelength * doppler_factor
+#     new_flux = np.interp(new_wavelength, wavelength, flux)
+#     return new_flux # IF I KEEP VELOCITY-SPACE THEN DON'T USE THIS (OR AT LEAST MODIFY IT)
 
 
 def get_apogee_continuum(spec, spec_err = None, cont_pixels = None):
