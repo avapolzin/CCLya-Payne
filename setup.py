@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='The_Payne',
+setup(name='C_The_Payne',
       version='1.1',
       description='Tools for interpolating spectral models with neural networks.',
       author='Yuan-Sen Ting',
@@ -8,7 +8,7 @@ setup(name='The_Payne',
       license='MIT',
       url='https://github.com/highzclouds/C_The_Payne',
       package_dir = {},
-      packages=['The_Payne'],
-      package_data={'The_Payne':['other_data/*.npz','neural_nets/*.npz']},
+      packages=['C_The_Payne'],
+      package_data={'C_The_Payne':['other_data/*.npz','neural_nets/*.npz']},
       dependency_links = [],
       install_requires=['torch', 'torchvision'])
