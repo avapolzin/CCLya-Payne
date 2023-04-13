@@ -113,7 +113,7 @@ class Payne_model(torch.nn.Module):
 # train neural networks
 def neural_net(training_labels, training_spectra, validation_labels, validation_spectra,\
              num_neurons = 300, num_steps=1e4, learning_rate=1e-4, batch_size=512,\
-             num_features = 64*5, mask_size=11, num_pixel=7214): ## CHANGE NUMBER OF PIXELS, MASK SIZE - MAY NEED TO CHANGE NUM FEATURES IF TROUBLESHOOTING
+             num_features = 64*5, mask_size=11, num_pixel=400): ## CHANGE NUMBER OF PIXELS, MASK SIZE - MAY NEED TO CHANGE NUM FEATURES IF TROUBLESHOOTING
 
     '''
     Training a neural net to emulate spectral models
