@@ -11,7 +11,7 @@ def read_in_neural_network(): ## CHANGE TO IMPORT TLAC-SPECIFIC FILE
     can train your own networks and edit this function to read them in.
     '''
 
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'neural_nets/NN_normalized_spectra_TLAC.npz')
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'neural_nets/NN_normalized_spectra.npz') ## CHANGED THIS BACK AND FORTH BUT THIS SHOULD BE CORRECT
     tmp = np.load(path)
     w_array_0 = tmp["w_array_0"]
     w_array_1 = tmp["w_array_1"]
