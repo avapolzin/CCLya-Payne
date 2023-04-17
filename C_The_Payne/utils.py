@@ -4,14 +4,14 @@ import numpy as np
 import os
 
 
-def read_in_neural_network():
+def read_in_neural_network(): ## CHANGE TO IMPORT TLAC-SPECIFIC FILE
     '''
     read in the weights and biases parameterizing a particular neural network.
     You can read in existing networks from the neural_nets/ directory, or you
     can train your own networks and edit this function to read them in.
     '''
 
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'neural_nets/NN_normalized_spectra.npz')
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'neural_nets/NN_normalized_spectra_TLAC.npz')
     tmp = np.load(path)
     w_array_0 = tmp["w_array_0"]
     w_array_1 = tmp["w_array_1"]
