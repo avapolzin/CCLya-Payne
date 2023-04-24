@@ -71,10 +71,14 @@ def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     '''
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') # MODIFY THIS
     tmp = np.load(path)
-    training_labels = (tmp["labels"].T)[:800,:]
-    training_spectra = tmp["spectra"][:800,:]
-    validation_labels = (tmp["labels"].T)[800:,:]
-    validation_spectra = tmp["spectra"][800:,:]
+#     training_labels = (tmp["labels"].T)[:800,:]
+#     training_spectra = tmp["spectra"][:800,:]
+#     validation_labels = (tmp["labels"].T)[800:,:]
+#     validation_spectra = tmp["spectra"][800:,:]
+    training_labels = (tmp["labels"].T) ## Including all values here
+    training_spectra = tmp["spectra"]
+    validation_labels = (tmp["labels"].T)
+    validation_spectra = tmp["spectra"]
     tmp.close()
     return training_labels, training_spectra, validation_labels, validation_spectra
 
