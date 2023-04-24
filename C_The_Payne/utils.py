@@ -69,15 +69,23 @@ def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     In practice, more training spectra will be better. The default
     neural network was trained using 12000 training spectra.
     '''
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') # MODIFY THIS
+    #     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') # MODIFY THIS
+    #     training_labels = (tmp["labels"].T)[:800,:]
+    #     training_spectra = tmp["spectra"][:800,:]
+    #     validation_labels = (tmp["labels"].T)[800:,:]
+    #     validation_spectra = tmp["spectra"][800:,:]
+    
+    # TRAINING
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') ## MODIFIED THIS
     tmp = np.load(path)
-#     training_labels = (tmp["labels"].T)[:800,:]
-#     training_spectra = tmp["spectra"][:800,:]
-#     validation_labels = (tmp["labels"].T)[800:,:]
-#     validation_spectra = tmp["spectra"][800:,:]
     training_labels = (tmp["labels"].T) ## Including all values here
     training_spectra = tmp["spectra"]
-    validation_labels = (tmp["labels"].T)
+    tmp.close()
+    
+    # VALIDATION
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_validation_spectra.npz') ## MODIFIED THIS
+    tmp = np.load(path)
+    validation_labels = (tmp["labels"].T) ## Including all values here
     validation_spectra = tmp["spectra"]
     tmp.close()
     return training_labels, training_spectra, validation_labels, validation_spectra
