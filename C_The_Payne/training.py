@@ -214,7 +214,8 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
             y_pred = model(x[idx])
             
             ## ADDED PRINT LINE TO LOOK AT ERROR WITH LOSS CALC
-            print(f'y_pred: {y_pred}; y[idx]: {y[idx]}')
+            print(f'y_pred: {y_pred};' + '\n' + f'y[idx]: {y[idx]}')
+            print(f'y_pred shape: {y_pred.shape};' + '\n' + f'y[idx] shape: {y[idx].shape}')
             
             loss = loss_fn(y_pred, y[idx])*1e4
             optimizer.zero_grad()
