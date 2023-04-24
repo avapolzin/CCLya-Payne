@@ -189,6 +189,8 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
     # train in batches
     nsamples = x.shape[0]
     nbatches = nsamples // batch_size
+    
+    print(f'nsamples: {nsamples}; nbatches: {nbatches}; batch_size: {batch_size}')
 
     nsamples_valid = x_valid.shape[0]
     nbatches_valid = nsamples_valid // batch_size
