@@ -212,7 +212,10 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
         for i in range(nbatches):
             idx = perm[i * batch_size : (i+1) * batch_size]
             y_pred = model(x[idx])
-
+            
+            ## ADDED PRINT LINE TO LOOK AT ERROR WITH LOSS CALC
+            print(f'y_pred: {y_pred}; y[idx]: {y[idx]}')
+            
             loss = loss_fn(y_pred, y[idx])*1e4
             optimizer.zero_grad()
             loss.backward(retain_graph=False)
