@@ -29,6 +29,7 @@ from . import radam
 
 
 #===================================================================================================
+'''
 # simple multi-layer perceptron model
 class Payne_model(torch.nn.Module):
     def __init__(self, dim_in, num_neurons, num_features, mask_size, num_pixel):
@@ -43,10 +44,10 @@ class Payne_model(torch.nn.Module):
 
     def forward(self, x):
         return self.features(x)
-
+'''
 #---------------------------------------------------------------------------------------------------
 # resnet models
-'''
+
 class Payne_model(torch.nn.Module):
     def __init__(self, dim_in, num_neurons, num_features, mask_size, num_pixel):
         super(Payne_model, self).__init__()
@@ -107,7 +108,7 @@ class Payne_model(torch.nn.Module):
 
         x7 = self.deconv7(x6)[:,0,:self.num_pixel]
         return x7
-'''
+
 
 #===================================================================================================
 # train neural networks
