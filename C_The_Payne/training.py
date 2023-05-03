@@ -268,7 +268,7 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
                 b_array_2 = model_numpy[5]
 
                 # save parameters and remember how we scaled the labels
-                np.savez(f"{working_dir}NN_normalized_spectra.npz",\ ##
+                np.savez(f"{working_dir}NN_normalized_spectra.npz",\
                         w_array_0 = w_array_0,\
                         w_array_1 = w_array_1,\
                         w_array_2 = w_array_2,\
@@ -277,13 +277,13 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
                         b_array_2 = b_array_2,\
                         x_max=x_max,\
                         x_min=x_min,)
-                print(f"Saved {working_dir}NN_normalized_spectra.npz") ##
+                print(f"Saved {working_dir}NN_normalized_spectra.npz")
 
                 # save the training loss
-                np.savez(f"{working_dir}training_loss.npz",\ ##
+                np.savez(f"{working_dir}training_loss.npz",\
                          training_loss = training_loss,\
                          validation_loss = validation_loss)
-                print(f"Saved {working_dir}training_loss.npz") ##
+                print(f"Saved {working_dir}training_loss.npz")
 
 #--------------------------------------------------------------------------------------------
     # extract the weights and biases
@@ -295,7 +295,7 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
     b_array_2 = model_numpy[5]
 
     # save parameters and remember how we scaled the labels
-    np.savez(f"{working_dir}NN_normalized_spectra.npz",\ ##
+    np.savez(f"{working_dir}NN_normalized_spectra.npz",\
              w_array_0 = w_array_0,\
              w_array_1 = w_array_1,\
              w_array_2 = w_array_2,\
@@ -307,9 +307,9 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
     print("Saved final NN_normalized_spectra")
 
     # save the final training loss
-    np.savez(f"{working_dir}training_loss.npz",\ ##
+    np.savez(f"{working_dir}training_loss.npz",\
              training_loss = training_loss,\
              validation_loss = validation_loss)
-    print("Saved final training_loss") ##
+    print("Saved final training_loss")
 
     return
