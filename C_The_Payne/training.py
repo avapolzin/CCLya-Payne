@@ -157,7 +157,10 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
     Erik: I added a working_dir parameter to specify where the neural network files are saved.
 
     '''
-
+    ## FOR KEEPING TRACK
+    current_dir = os.getcwd()
+    print(f"{current_dir}")
+    
     # run on cuda
     dtype = torch.cuda.FloatTensor
     torch.set_default_tensor_type('torch.cuda.FloatTensor')
