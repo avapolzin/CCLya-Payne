@@ -114,6 +114,7 @@ class Payne_model(torch.nn.Module):
 #===================================================================================================
 # train neural networks
 def neural_net(training_labels, training_spectra, validation_labels, validation_spectra,\
+             working_dir = os.getcwd(),\ ## ADDED THIS TO SPECIFY FILE LOCATION
              num_neurons = 300, num_steps=1e4, learning_rate=1e-4, batch_size=512,\
              num_features = 64*5, mask_size=11, num_pixel=1401): ## CHANGE NUMBER OF PIXELS, MASK SIZE - MAY NEED TO CHANGE NUM FEATURES IF TROUBLESHOOTING
 
@@ -153,6 +154,8 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
     batch_size = the batch size for training the neural networks during the stochastic
     gradient descent. A larger batch_size reduces stochasticity, but it might also
     risk of stucking in local minima
+    
+    Erik: I added a working_dir parameter to specify where the neural network files are saved.
 
     '''
 
@@ -266,7 +269,7 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
                 b_array_2 = model_numpy[5]
 
                 # save parameters and remember how we scaled the labels
-                np.savez("NN_normalized_spectra.npz",\
+                np.savez(f"{working_dir}NN_normalized_spectra.npz",\ ##
                         w_array_0 = w_array_0,\
                         w_array_1 = w_array_1,\
                         w_array_2 = w_array_2,\
@@ -275,11 +278,13 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
                         b_array_2 = b_array_2,\
                         x_max=x_max,\
                         x_min=x_min,)
+                print(f"Saved {working_dir}NN_normalized_spectra.npz") ##
 
                 # save the training loss
-                np.savez("training_loss.npz",\
+                np.savez(f"{working_dir}training_loss.npz",\ ##
                          training_loss = training_loss,\
                          validation_loss = validation_loss)
+                print(f"Saved {working_dir}training_loss.npz") ##
 
 #--------------------------------------------------------------------------------------------
     # extract the weights and biases
@@ -291,7 +296,7 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
     b_array_2 = model_numpy[5]
 
     # save parameters and remember how we scaled the labels
-    np.savez("NN_normalized_spectra.npz",\
+    np.savez(f"{working_dir}NN_normalized_spectra.npz",\ ##
              w_array_0 = w_array_0,\
              w_array_1 = w_array_1,\
              w_array_2 = w_array_2,\
@@ -300,10 +305,12 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
              b_array_2 = b_array_2,\
              x_max=x_max,\
              x_min=x_min,)
+    print("Saved final NN_normalized_spectra")
 
     # save the final training loss
-    np.savez("training_loss.npz",\
+    np.savez(f"{working_dir}training_loss.npz",\ ##
              training_loss = training_loss,\
              validation_loss = validation_loss)
+    print("Saved final training_loss") ##
 
     return
