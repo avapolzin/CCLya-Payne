@@ -64,7 +64,7 @@ def load_cannon_contpixels(): ## MODIFY NUMBER OF PIXELS IN CONTINUUM FILE
     return pixels_cannon
 
 
-def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
+def load_training_data(version=""): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     '''
     read in the default Kurucz training spectra for APOGEE
 
