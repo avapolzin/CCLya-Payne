@@ -77,7 +77,7 @@ def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     
     # TRAINING
 #     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') ## MODIFIED THIS
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra_smallbatch.npz') ## SMALL BATCH
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra_smallbatch_v2.npz') ## SMALL BATCH
     tmp = np.load(path)
     training_labels = (tmp["labels"].T) ## Including all values here
     training_spectra = tmp["spectra"]
@@ -85,7 +85,7 @@ def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     
     # VALIDATION
 #     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_validation_spectra.npz') ## MODIFIED THIS
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_validation_spectra_smallbatch.npz') ## SMALL BATCH
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_validation_spectra_smallbatch_v2.npz') ## SMALL BATCH
     tmp = np.load(path)
     validation_labels = (tmp["labels"].T) ## Including all values here
     validation_spectra = tmp["spectra"]
