@@ -3,17 +3,18 @@ from __future__ import absolute_import, division, print_function # python2 compa
 import numpy as np
 import os
 
-## DEFINE GLOBAL PARAMETER
-train_suffix = '_v3'
-
-def read_in_neural_network(): ## CHANGE TO IMPORT TLAC-SPECIFIC FILE
+def read_in_neural_network(version=""): ## CHANGE TO IMPORT TLAC-SPECIFIC FILE
     '''
     read in the weights and biases parameterizing a particular neural network.
     You can read in existing networks from the neural_nets/ directory, or you
     can train your own networks and edit this function to read them in.
+    
+    ##
+    version - a string, suffix, referring to the current NN network referred to. Default is empty.
     '''
-
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),f'neural_nets/NN_normalized_spectra{train_suffix}.npz') ## CHANGED THIS BACK AND FORTH BUT THIS SHOULD BE CORRECT
+    fname = 'neural_nets/NN_normalized_spectra' + version + '.npz' ##
+    
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname) ## CHANGED THIS BACK AND FORTH BUT THIS SHOULD BE CORRECT
     tmp = np.load(path)
     w_array_0 = tmp["w_array_0"]
     w_array_1 = tmp["w_array_1"]
@@ -79,7 +80,10 @@ def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     
     # TRAINING
 #     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') ## MODIFIED THIS
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),f'other_data/TLAC_training_spectra{train_suffix}.npz') ## SMALL BATCH
+    
+    fname = 'neural_nets/TLAC_training_spectra' + version + '.npz' ##
+    
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname) ## SMALL BATCH
     tmp = np.load(path)
     training_labels = (tmp["labels"].T) ## Including all values here
     training_spectra = tmp["spectra"]
@@ -87,7 +91,10 @@ def load_training_data(): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     
     # VALIDATION
 #     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_validation_spectra.npz') ## MODIFIED THIS
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),f'other_data/TLAC_validation_spectra{train_suffix}.npz') ## SMALL BATCH
+    
+    fname = 'neural_nets/TLAC_validation_spectra' + version + '.npz' ##
+    
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname) ## SMALL BATCH
     tmp = np.load(path)
     validation_labels = (tmp["labels"].T) ## Including all values here
     validation_spectra = tmp["spectra"]
