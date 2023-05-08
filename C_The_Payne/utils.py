@@ -16,6 +16,7 @@ def read_in_neural_network(version=""): ## CHANGE TO IMPORT TLAC-SPECIFIC FILE
     
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname) ## CHANGED THIS BACK AND FORTH BUT THIS SHOULD BE CORRECT
     tmp = np.load(path)
+    print(f'Neural network file {fname} has been read.') ##
     w_array_0 = tmp["w_array_0"]
     w_array_1 = tmp["w_array_1"]
     w_array_2 = tmp["w_array_2"]
