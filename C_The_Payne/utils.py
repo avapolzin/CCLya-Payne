@@ -82,7 +82,7 @@ def load_training_data(version=""): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW
     # TRAINING
 #     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') ## MODIFIED THIS
     
-    fname = 'neural_nets/TLAC_training_spectra' + version + '.npz' ##
+    fname = 'other_data/TLAC_training_spectra' + version + '.npz' ##
     
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname) ## SMALL BATCH
     tmp = np.load(path)
@@ -93,7 +93,7 @@ def load_training_data(version=""): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW
     # VALIDATION
 #     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_validation_spectra.npz') ## MODIFIED THIS
     
-    fname = 'neural_nets/TLAC_validation_spectra' + version + '.npz' ##
+    fname = 'other_data/TLAC_validation_spectra' + version + '.npz' ##
     
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname) ## SMALL BATCH
     tmp = np.load(path)
