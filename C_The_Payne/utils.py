@@ -180,6 +180,7 @@ def get_loss(version=""):
     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname)
     
     tmp = np.load(path) # the output array also stores the training and validation loss
+    print(f'Read training and validation loss of {path} for version {version} of C_The_Payne training.')
     training_loss = tmp["training_loss"]
     validation_loss = tmp["validation_loss"]
     tmp.close()
