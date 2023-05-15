@@ -171,3 +171,17 @@ def _fit_cannonpixels(wav, spec, specerr, deg, cont_pixels): # VELOCITY!!
     chpoly = np.polynomial.Chebyshev.fit(wav[cont_pixels], spec[cont_pixels],
                 deg, w=1./specerr[cont_pixels])
     return chpoly(wav)
+
+## I ADDED THIS FUNCTION
+def get_loss(version=""):
+    
+    fname = 'other_data/training_loss' + version + '.npz' ##
+    
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname)
+    
+    tmp = np.load(path) # the output array also stores the training and validation loss
+    training_loss = tmp["training_loss"]
+    validation_loss = tmp["validation_loss"]
+    tmp.close()
+    
+    return training_loss, validation_loss
