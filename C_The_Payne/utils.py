@@ -172,7 +172,7 @@ def _fit_cannonpixels(wav, spec, specerr, deg, cont_pixels): # VELOCITY!!
                 deg, w=1./specerr[cont_pixels])
     return chpoly(wav)
 
-## I ADDED THIS FUNCTION
+## I ADDED THE FUNCTIONS BELOW
 def get_loss(version=""):
     
     fname = 'other_data/training_loss' + version + '.npz' ##
@@ -186,3 +186,17 @@ def get_loss(version=""):
     tmp.close()
     
     return training_loss, validation_loss
+
+def get_loss(version=""):
+    
+    fname = 'other_data/TLAC_validation_spectra' + version + '.npz' ##
+    
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname)
+    
+    tmp = np.load(path) # the output array also stores the training and validation loss
+    print(f'Read validation spectra of {path} for version {version} of C_The_Payne training.')
+    spec_arr = tmp["spec_arr"]
+    label_arr = tmp["label_arr"]
+    tmp.close()
+    
+    return spec_arr, label_arr
