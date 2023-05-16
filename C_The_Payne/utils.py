@@ -187,7 +187,7 @@ def get_loss(version=""):
     
     return training_loss, validation_loss
 
-def get_loss(version=""):
+def get_validation_spectra(version=""):
     
     fname = 'other_data/TLAC_validation_spectra' + version + '.npz' ##
     
