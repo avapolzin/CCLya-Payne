@@ -195,8 +195,8 @@ def get_validation_spectra(version=""):
     
     tmp = np.load(path) # the output array also stores the training and validation loss
     print(f'Read validation spectra of {path} for version {version} of C_The_Payne training.')
-    spec_arr = tmp["spec_arr"]
-    label_arr = tmp["label_arr"]
+    spec_arr = tmp["spectra"]
+    label_arr = tmp["labels"]
     tmp.close()
     
     return spec_arr, label_arr
