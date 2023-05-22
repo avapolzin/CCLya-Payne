@@ -3,7 +3,9 @@ from __future__ import absolute_import, division, print_function # python2 compa
 import numpy as np
 import os
 
-def read_in_neural_network(version=""): ## CHANGE TO IMPORT TLAC-SPECIFIC FILE
+current_dir = os.getcwd()
+
+def read_in_neural_network(version="", nn_dir=current_dir): ## CHANGE TO IMPORT TLAC-SPECIFIC FILE
     '''
     read in the weights and biases parameterizing a particular neural network.
     You can read in existing networks from the neural_nets/ directory, or you
@@ -12,9 +14,9 @@ def read_in_neural_network(version=""): ## CHANGE TO IMPORT TLAC-SPECIFIC FILE
     ##
     version - a string, suffix, referring to the current NN network referred to. Default is empty.
     '''
-    fname = 'neural_nets/NN_normalized_spectra' + version + '.npz' ##
+    fname = f'NN_normalized_spectra' + version + '.npz' ##
     
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname) ## CHANGED THIS BACK AND FORTH BUT THIS SHOULD BE CORRECT
+    path = os.path.join(nn_dir, fname) ##
     tmp = np.load(path)
     print(f'Neural network file {fname} has been read.') ##
     w_array_0 = tmp["w_array_0"]
@@ -65,7 +67,7 @@ def load_cannon_contpixels(): ## MODIFY NUMBER OF PIXELS IN CONTINUUM FILE
     return pixels_cannon
 
 
-def load_training_data(version=""): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
+def load_training_data(version="", nn_dir=current_dir): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW')
     '''
     read in the default Kurucz training spectra for APOGEE
 
@@ -73,52 +75,24 @@ def load_training_data(version=""): # MODIFY NUMBER OF SPECTRA (FROM 800 TO 'NEW
     In practice, more training spectra will be better. The default
     neural network was trained using 12000 training spectra.
     '''
-    #     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') # MODIFY THIS
-    #     training_labels = (tmp["labels"].T)[:800,:]
-    #     training_spectra = tmp["spectra"][:800,:]
-    #     validation_labels = (tmp["labels"].T)[800:,:]
-    #     validation_spectra = tmp["spectra"][800:,:]
-    
     # TRAINING
-#     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_training_spectra.npz') ## MODIFIED THIS
+    fname = 'TLAC_training_spectra' + version + '.npz' ##
     
-    fname = 'other_data/TLAC_training_spectra' + version + '.npz' ##
-    
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname) ## SMALL BATCH
+    path = os.path.join(nn_dir, fname) ##
     tmp = np.load(path)
     training_labels = (tmp["labels"].T) ## Including all values here
     training_spectra = tmp["spectra"]
     tmp.close()
     
     # VALIDATION
-#     path = os.path.join(os.path.dirname(os.path.realpath(__file__)),'other_data/TLAC_validation_spectra.npz') ## MODIFIED THIS
+    fname = 'TLAC_validation_spectra' + version + '.npz' ##
     
-    fname = 'other_data/TLAC_validation_spectra' + version + '.npz' ##
-    
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname) ## SMALL BATCH
+    path = os.path.join(nn_dir, fname) ##
     tmp = np.load(path)
     validation_labels = (tmp["labels"].T) ## Including all values here
     validation_spectra = tmp["spectra"]
     tmp.close()
     return training_labels, training_spectra, validation_labels, validation_spectra
-
-
-# def doppler_shift(wavelength, flux, dv): ## COMMENT THIS FUNCTION OUT
-    
-    
-#     '''
-#     dv is in km/s
-#     We use the convention where a positive dv means the object is moving away.
-
-#     This linear interpolation is actually not that accurate, but is fine if you
-#     only care about accuracy to the level of a few tenths of a km/s. If you care
-#     about better accuracy, you can do better with spline interpolation.
-#     '''
-#     c = 2.99792458e5 # km/s
-#     doppler_factor = np.sqrt((1 - dv/c)/(1 + dv/c))
-#     new_wavelength = wavelength * doppler_factor
-#     new_flux = np.interp(new_wavelength, wavelength, flux)
-#     return new_flux # IF I KEEP VELOCITY-SPACE THEN DON'T USE THIS (OR AT LEAST MODIFY IT)
 
 
 def get_apogee_continuum(spec, spec_err = None, cont_pixels = None):
@@ -142,9 +116,9 @@ def get_apogee_continuum(spec, spec_err = None, cont_pixels = None):
         spec_err = np.zeros(spec.shape[0]) + 0.0001
 
     # Rescale wavelengths
-    bluewav = 2*np.arange(2920)/2919 - 1 # VELOCITY!!
-    greenwav = 2*np.arange(2400)/2399 - 1 # VELOCITY!!
-    redwav = 2*np.arange(1894)/1893 - 1 # VELOCITY!!
+    bluewav = 2*np.arange(2920)/2919 - 1
+    greenwav = 2*np.arange(2400)/2399 - 1
+    redwav = 2*np.arange(1894)/1893 - 1
 
     blue_pixels= cont_pixels[:2920]
     green_pixels= cont_pixels[2920:5320]
@@ -161,7 +135,7 @@ def get_apogee_continuum(spec, spec_err = None, cont_pixels = None):
     return cont
 
 
-def _fit_cannonpixels(wav, spec, specerr, deg, cont_pixels): # VELOCITY!!
+def _fit_cannonpixels(wav, spec, specerr, deg, cont_pixels):
     ## "_fit_cannonpixels()" DOES NOT NEED WAVELENGTH INSTEAD OF VELOCITY - JUST TAKES Y-VALUES AND USES THE INDICES OF THE PIXELS
     
     '''
@@ -175,9 +149,9 @@ def _fit_cannonpixels(wav, spec, specerr, deg, cont_pixels): # VELOCITY!!
 ## I ADDED THE FUNCTIONS BELOW
 def get_loss(version=""):
     
-    fname = 'other_data/training_loss' + version + '.npz' ##
+    fname = 'training_loss' + version + '.npz' ##
     
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname)
+    path = os.path.join(nn_dir, fname)
     
     tmp = np.load(path) # the output array also stores the training and validation loss
     print(f'Read training and validation loss of {path} for version {version} of C_The_Payne training.')
@@ -189,9 +163,9 @@ def get_loss(version=""):
 
 def get_validation_spectra(version=""):
     
-    fname = 'other_data/TLAC_validation_spectra' + version + '.npz' ##
+    fname = 'TLAC_validation_spectra' + version + '.npz' ##
     
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)),fname)
+    path = os.path.join(nn_dir, fname)
     
     tmp = np.load(path) # the output array also stores the training and validation loss
     print(f'Read validation spectra of {path} for version {version} of C_The_Payne training.')
