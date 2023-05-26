@@ -26,6 +26,7 @@ import torch
 import time
 from torch.autograd import Variable
 from . import radam
+from datetime import datetime
 
 
 #===================================================================================================
@@ -113,7 +114,7 @@ class Payne_model(torch.nn.Module):
 '''
 #===================================================================================================
 # train neural networks
-def neural_net(training_labels, training_spectra, validation_labels, validation_spectra, working_dir,\
+def neural_net(training_labels, training_spectra, validation_labels, validation_spectra, save_dir,\
                num_neurons = 300, num_steps=1e4, learning_rate=1e-4, batch_size=512,\
                num_features = 64*5, mask_size=11, num_pixel=1401): ## CHANGE NUMBER OF PIXELS, MASK SIZE - MAY NEED TO CHANGE NUM FEATURES IF TROUBLESHOOTING
 
@@ -154,12 +155,10 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
     gradient descent. A larger batch_size reduces stochasticity, but it might also
     risk of stucking in local minima
     
-    Erik: I added a working_dir parameter to specify where the neural network files are saved.
+    Erik: I added a save_dir parameter to specify where the neural network files are saved.
+    Erik: I also added a datetime parameter to the saved filename.
 
     '''
-    ## FOR KEEPING TRACK
-    current_dir = os.getcwd()
-    print(f"{current_dir}")
     
     # run on cuda
     dtype = torch.cuda.FloatTensor
@@ -271,7 +270,7 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
                 b_array_2 = model_numpy[5]
 
                 # save parameters and remember how we scaled the labels
-                np.savez(f"{working_dir}NN_normalized_spectra.npz",\
+                np.savez(f"{save_dir}NN_normalized_spectra.npz",\
                         w_array_0 = w_array_0,\
                         w_array_1 = w_array_1,\
                         w_array_2 = w_array_2,\
@@ -280,13 +279,13 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
                         b_array_2 = b_array_2,\
                         x_max=x_max,\
                         x_min=x_min,)
-                print(f"Saved {working_dir}NN_normalized_spectra.npz")
+                print(f"Saved {save_dir}NN_normalized_spectra.npz")
 
                 # save the training loss
-                np.savez(f"{working_dir}training_loss.npz",\
+                np.savez(f"{save_dir}training_loss.npz",\
                          training_loss = training_loss,\
                          validation_loss = validation_loss)
-                print(f"Saved {working_dir}training_loss.npz")
+                print(f"Saved {save_dir}training_loss.npz")
 
 #--------------------------------------------------------------------------------------------
     # extract the weights and biases
@@ -297,8 +296,12 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
     w_array_2 = model_numpy[4]
     b_array_2 = model_numpy[5]
 
+    # get current date and time
+    current_datetime = datetime.now()
+    formatted_datetime = current_datetime.strftime("%m-%d-%Y_%H-%M-%S")
+    
     # save parameters and remember how we scaled the labels
-    np.savez(f"{working_dir}NN_normalized_spectra.npz",\
+    np.savez(f"{save_dir}NN_normalized_spectra{formatted_datetime}.npz",\
              w_array_0 = w_array_0,\
              w_array_1 = w_array_1,\
              w_array_2 = w_array_2,\
@@ -310,7 +313,7 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
     print("Saved final NN_normalized_spectra")
 
     # save the final training loss
-    np.savez(f"{working_dir}training_loss.npz",\
+    np.savez(f"{save_dir}training_loss{formatted_datetime}.npz",\
              training_loss = training_loss,\
              validation_loss = validation_loss)
     print("Saved final training_loss")
