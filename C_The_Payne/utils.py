@@ -18,7 +18,7 @@ def read_in_neural_network(load_local=False, nn_fname=""):
     
     tmp = np.load(nn_fname)
     
-    print(f'Neural network file {nn_fname} has been read.')
+#     print(f'Neural network file {nn_fname} has been read.')
     
     w_array_0 = tmp["w_array_0"]
     w_array_1 = tmp["w_array_1"]
