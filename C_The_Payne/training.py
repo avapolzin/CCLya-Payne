@@ -42,7 +42,7 @@ class Payne_model(torch.nn.Module):
             torch.nn.LeakyReLU(),
             torch.nn.Linear(num_neurons, num_pixel),
             torch.nn.Sigmoid(), # Added Sigmoid in final layer
-            torch.nn.Linear(num_neurons, num_pixel), # Linearize
+            torch.nn.Linear(num_pixel, num_pixel), # Linearize with input and output dimensions equal to number of pixels
         )
 
     def forward(self, x):
