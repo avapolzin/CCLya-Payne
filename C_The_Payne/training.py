@@ -40,9 +40,9 @@ class Payne_model(torch.nn.Module):
             torch.nn.LeakyReLU(),
             torch.nn.Linear(num_neurons, num_neurons),
             torch.nn.LeakyReLU(),
-            torch.nn.Linear(num_neurons, num_pixel),
+            torch.nn.Linear(num_neurons, num_neurons),
             torch.nn.Sigmoid(), # Added Sigmoid in final layer
-            torch.nn.Linear(num_pixel, num_pixel), # Linearize with input and output dimensions equal to number of pixels
+            torch.nn.Linear(num_neurons, num_pixel), # Linearize with input and output dimensions equal to number of pixels
         )
 
     def forward(self, x):
@@ -222,8 +222,8 @@ def neural_net(training_labels, training_spectra, validation_labels, validation_
             y_pred = model(x[idx])
             
             ## ADDED PRINT LINE TO LOOK AT ERROR WITH LOSS CALC
-            print(f'y_pred: {y_pred};' + '\n' + f'y[idx]: {y[idx]}')
-            print(f'y_pred shape: {y_pred.shape};' + '\n' + f'y[idx] shape: {y[idx].shape}')
+            #print(f'y_pred: {y_pred};' + '\n' + f'y[idx]: {y[idx]}')
+            #print(f'y_pred shape: {y_pred.shape};' + '\n' + f'y[idx] shape: {y[idx].shape}')
             
             loss = loss_fn(y_pred, y[idx])*1e4
             optimizer.zero_grad()
