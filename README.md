@@ -1,4 +1,4 @@
-# C_The_Payne
+# clya
 
 Tools for interpolating spectral models with neural networks.
 
