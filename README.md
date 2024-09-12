@@ -55,12 +55,12 @@ To get started with fitting Lyα profiles to observed spectra:
 3. Modify the **`guess.txt`** and **`priors.txt`** files to set your initial parameter guesses and parameter priors.
 4. Fitting will produce a few files in the ./mcmc directory. Inspect these file sto make sure your fitting is working as expected.
 
-### Acknowledgements
-The **fitting** and **radam** module, along with certain functions in the **utils** module (read_in_neural_network, leaky_relu, get_spectrum_from_neural_net, load_training_data, get_loss), are adapted from **[The Payne](https://github.com/tingyuansen/The_Payne)** developed by Ting et al. (2019, [ApJ 879, 69](https://ui.adsabs.harvard.edu/abs/2019ApJ...879...69T/abstract)), which originally fit stellar atmosphere spectra using a neural network approach. The modifications in this repository have been tailored to fit Lyα spectra. The synthetic spectra used for training the neural network were generated using the **TLAC** radiative transfer code by Gronke and Dijkstra (2014, [MNRAS 444, 1095](https://ui.adsabs.harvard.edu/abs/2014MNRAS.444.1095G/abstract)).
+### Citations and references
+If you use any of these tools in published work, please cite the following papers.
+- Ting et al. (2019, [ApJ 879, 69](https://ui.adsabs.harvard.edu/abs/2019ApJ...879...69T/abstract)), which originally fit stellar atmosphere spectra using a neural network approach.  In particular, the **fitting** and **radam** module, along with certain functions in the **utils** module (read_in_neural_network, leaky_relu, get_spectrum_from_neural_net, load_training_data, get_loss), are adapted from **[The Payne](https://github.com/tingyuansen/The_Payne)** developed by these authors.  The modifications in this repository have been tailored to fit Lyα spectra;
+- Gronke and Dijkstra (2014, [MNRAS 444, 1095](https://ui.adsabs.harvard.edu/abs/2014MNRAS.444.1095G/abstract)).  The synthetic spectra used for training the neural network were generated using the **TLAC** radiative transfer code by these authors; and
+- Solhaug et al. (2024), submitted to the Open Journal of Astrophysics, which produced all the tools that combine the TLAC radiative transfer calculations with the machine learning framework to facilitate Lya profile analyses.
 
 ### Authors
 - [Erik Solhaug](https://astrophysics.uchicago.edu/people/profile/erik-solhaug/) (The University of Chicago) 
 - [Hsiao-Wen Chen](https://astrophysics.uchicago.edu/people/profile/hsiao-wen-chen/) (The University of Chicago)
-
-### Citation
-If you use **CCLya** in your research, please cite **Solhaug et al. 2024**.
