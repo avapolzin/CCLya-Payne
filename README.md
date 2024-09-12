@@ -1,4 +1,5 @@
 # CCLya: Neural Network Emulation of Lyman-alpha Profiles
+[![DOI](https://zenodo.org/badge/624616131.svg)](https://zenodo.org/doi/10.5281/zenodo.13755691)
 
 **CCLya** (**C**ode for **C**ontinuous **Ly**man-**a**lpha) is a neural network designed to emulate Lyman-alpha (Lyα) profiles from radiative transfer simulations. The network is trained on synthetic spectra convolved with the instrumental point spread function (PSF) of the Magellan MIKE echelle spectrograph (10 km/s resolution). With this tool, you can quickly generate Lyα profiles based on a set of input parameters that describe intrinsic dynamics and physical conditions of the source.
 
