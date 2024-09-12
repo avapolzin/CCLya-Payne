@@ -1,7 +1,7 @@
-# CCLya: Neural Network Emulation of Lyman-alpha Profiles
+# CCLya-Payne: Neural Network Emulation of Lyman-alpha Profiles
 [![DOI](https://zenodo.org/badge/624616131.svg)](https://zenodo.org/doi/10.5281/zenodo.13755691)
 
-**CCLya** (**C**ode for **C**ontinuous **Ly**man-**a**lpha) is a neural network designed to emulate Lyman-alpha (Lyα) profiles from radiative transfer simulations. The network is trained on synthetic spectra convolved with the instrumental point spread function (PSF) of the Magellan MIKE echelle spectrograph (10 km/s resolution). With this tool, you can quickly generate Lyα profiles based on a set of input parameters that describe intrinsic dynamics and physical conditions of the source.
+**CCLya-Payne** (**C**ode for **C**ontinuous **Ly**man-**a**lpha **P**rofile **A**nal**Y**sis via **N**eural **E**mulation) is a neural network designed to emulate Lyman-alpha (Lyα) profiles from radiative transfer simulations. The network is trained on synthetic spectra convolved with the instrumental point spread function (PSF) of the Magellan MIKE echelle spectrograph (10 km/s resolution). With this tool, you can quickly generate Lyα profiles based on a set of input parameters that describe intrinsic dynamics and physical conditions of the source.
 
 ### Features
 - Generate Lyα profiles quickly for a given set of input parameters across continuous parameter spaces.
@@ -51,7 +51,7 @@ This repository contains several modules and files that support the neural netwo
 
 ### Getting Started
 To get started with fitting Lyα profiles to observed spectra:
-1. CCLya works with Lyα profiles in velocity-space. You will need to convert your observed spectra to velocity-space before fitting.
+1. CCLya-Payne works with Lyα profiles in velocity-space. You will need to convert your observed spectra to velocity-space before fitting.
 2. Follow the steps outlined in the **`tutorial.ipynb`** Jupyter notebook for a quick guide on how to run the code and perform fits. A sample spectrum and fitting is included.
 3. Modify the **`guess.txt`** and **`priors.txt`** files to set your initial parameter guesses and parameter priors.
 4. Fitting will produce a few files in the ./mcmc directory. Inspect these file sto make sure your fitting is working as expected.
