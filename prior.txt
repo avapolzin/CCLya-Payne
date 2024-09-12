@@ -1,0 +1,11 @@
+# Parameter Guesses
+sigma_int_max: 50
+sigma_int_min: 0
+logN_HI_max: 20.0
+logN_HI_min: 19.4
+v_exp_max: 100
+v_exp_min: 10
+logT_max: 4.8
+logT_min: 4.0
+v_lya_max: 5
+v_lya_min: -5

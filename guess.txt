@@ -1,0 +1,6 @@
+# Parameter Guesses
+sigma_int: 20
+logN_HI: 19.7
+v_exp: 39
+logT: 4.6
+v_lya: 0
