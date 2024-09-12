@@ -59,7 +59,7 @@ To get started with fitting Lyα profiles to observed spectra:
 The **fitting** and **radam** module, along with certain functions in the **utils** module (read_in_neural_network, leaky_relu, get_spectrum_from_neural_net, load_training_data, get_loss), are adapted from **[The Payne](https://github.com/tingyuansen/The_Payne)** developed by Ting et al. (2019, [ApJ 879, 69](https://ui.adsabs.harvard.edu/abs/2019ApJ...879...69T/abstract)), which originally fit stellar atmosphere spectra using a neural network approach. The modifications in this repository have been tailored to fit Lyα spectra. The synthetic spectra used for training the neural network were generated using the **TLAC** radiative transfer code by Gronke and Dijkstra (2014, [MNRAS 444, 1095](https://ui.adsabs.harvard.edu/abs/2014MNRAS.444.1095G/abstract)).
 
 ### Authors
-This code was written by **Erik Solhaug** under the supervision of Hsiao-Wen Chen.
+This code was written by **[Erik Solhaug](https://astrophysics.uchicago.edu/people/profile/erik-solhaug/)** under the supervision of [Hsiao-Wen Chen](https://astrophysics.uchicago.edu/people/profile/hsiao-wen-chen/).
 
 For feedback or questions, please contact me at:  
 📧 eriksolhaug at uchicago dot edu
