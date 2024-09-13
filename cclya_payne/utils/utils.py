@@ -12,7 +12,7 @@ import pickle
 import time
 import os
 import pkg_resources
-DATA_PATH = pkg_resources.resource_filename(`cclya_payne', `data/')
+DATA_PATH = pkg_resources.resource_filename('cclya_payne', 'data/')
 
 def read_in_neural_network():
     '''
@@ -28,7 +28,7 @@ def read_in_neural_network():
         - x_min, x_max: Normalization parameters for input features.
     '''
 
-    nn_fname = pkg_resources.resource_filename(`cclya_payne', `data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_neuralnetwork.npz')
+    nn_fname = pkg_resources.resource_filename('cclya_payne', 'data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_neuralnetwork.npz')
 
     tmp = np.load(nn_fname)
 
@@ -108,7 +108,7 @@ def load_wavelength_array():
     - wavelength (numpy.ndarray): Array of wavelengths corresponding to the spectral data used by the neural network.
     '''
     
-    wav_fname =  pkg_resources.resource_filename(`cclya_payne', `data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_wavelength.npz')  #os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_wavelength.npz')
+    wav_fname =  pkg_resources.resource_filename('cclya_payne', 'data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_wavelength.npz')  #os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_wavelength.npz')
         
     tmp = np.load(wav_fname)
     wavelength = tmp['wavelength']
@@ -133,8 +133,8 @@ def load_training_data():
     - validation_spectra (numpy.ndarray): Validation spectra.
     '''
     
-    training_fname =  pkg_resources.resource_filename(`cclya_payne', `data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_training_spectra.npz')  #os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_training_spectra.npz')
-    validation_fname =  pkg_resources.resource_filename(`cclya_payne', `data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_validation_spectra.npz')  #os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_validation_spectra.npz')
+    training_fname =  pkg_resources.resource_filename('cclya_payne', 'data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_training_spectra.npz')  #os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_training_spectra.npz')
+    validation_fname =  pkg_resources.resource_filename('cclya_payne', 'data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_validation_spectra.npz')  #os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_validation_spectra.npz')
     
     # Load training spectra
     tmp = np.load(training_fname)
@@ -160,7 +160,7 @@ def get_loss():
     - validation_loss (numpy.ndarray): Array of validation loss values per 100 training step.
     '''
 
-    loss_fname = pkg_resources.resource_filename(`cclya_payne', `data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_training_loss.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_training_loss.npz')
+    loss_fname = pkg_resources.resource_filename('cclya_payne', 'data/'+'cclya_neuralnetwork.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_training_loss.npz') # os.path.join(os.path.dirname(os.path.realpath(__file__)),'data/cclya_training_loss.npz')
     
     tmp = np.load(loss_fname) # the output array also stores the training and validation loss
     
