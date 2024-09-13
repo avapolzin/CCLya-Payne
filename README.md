@@ -63,5 +63,5 @@ If you use any of these tools in published work, please cite the following paper
 - Solhaug et al. (2024), submitted to the Open Journal of Astrophysics, which produced all the tools that combine the TLAC radiative transfer calculations with the machine learning framework to facilitate Lya profile analyses.
 
 ### Authors
-- [Erik Solhaug](https://astrophysics.uchicago.edu/people/profile/erik-solhaug/) (The University of Chicago) 
+- [Erik Solhaug](https://astrophysics.uchicago.edu/people/profile/erik-solhaug/) (The University of Chicago) --- eriksolhaug at uchicago dot edu
 - [Hsiao-Wen Chen](https://astrophysics.uchicago.edu/people/profile/hsiao-wen-chen/) (The University of Chicago)
