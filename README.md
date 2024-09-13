@@ -7,6 +7,10 @@
 ```bash
 cd ~
 git clone https://github.com:highzclouds/CCLya-Payne
+```
+Before proceeding, download the files referenced in README_DATA.md and move them into CCLya-Payne/ccyla_payne/data.Then you can proceed with installing the python package as below. 
+
+```bash
 cd CCLya-Payne
 sudo pip install . 
 ```
