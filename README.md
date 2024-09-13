@@ -41,7 +41,7 @@ There are two versions of the neural network available:
 ### Training Data
 The neural network is trained on simulated Lyα spectra produced by the **TLAC** radiative transfer code (Gronke et al. 2015). These spectra are convolved with the PSF of the Magellan MIKE instrument to match the resolution of high-resolution spectroscopic data (10 km/s). If you wish to apply the neural network to other instruments, you may want to use the training.py package to train the neural network on the training data convolved to match the PSF of the instrument you're using, or change this code to convolve each neural network-produced model to match the PSF of your instrument.
 
-**Note:** Due to GitHub's file size limitations, the training and validation spectra used for the neural network are hosted externally. To download these data files, please refer to the README_DATA.md file for the download link and instructions.
+**Note:** Due to GitHub's file size limitations, the training and validation spectra used for the neural network are hosted externally. To download these data files, please refer to the [README_DATA.md](./README_DATA.md) file for the download link and instructions.
 
 ### Repository Structure
 This repository contains several modules and files that support the neural network and fitting processes:
