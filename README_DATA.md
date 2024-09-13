@@ -5,10 +5,10 @@ This repository includes all the essential code for running **CCLya-Payne**, but
 ## Data Files
 
 The data (specifically, the training and validation spectra) can be downloaded here:
-- [cclyapayne_training_spectra.npz](https://lambda.uchicago.edu/~hchen/public/CCLya/cclyapayne_training_spectra.npz): Training spectra for the convolved network.
-- [cclyapayne_validation_spectra.npz](https://lambda.uchicago.edu/~hchen/public/CCLya/cclyapayne_validation_spectra.npz): Validation spectra for the convolved network.
-- [cclyapayne_training_spectra_raw.npz](https://lambda.uchicago.edu/~hchen/public/CCLya/cclyapayne_training_spectra_raw.npz): Training spectra for the raw network (unconvolved).
-- [cclyapayne_validation_spectra_raw.npz](https://lambda.uchicago.edu/~hchen/public/CCLya/cclyapayne_validation_spectra_raw.npz): Validation spectra for the raw network (unconvolved).
+- [cclyapayne_training_spectra.npz](https://lambda.uchicago.edu/~hchen/public/CCLya/cclya_training_spectra.npz): Training spectra for the convolved network.
+- [cclyapayne_validation_spectra.npz](https://lambda.uchicago.edu/~hchen/public/CCLya/cclya_validation_spectra.npz): Validation spectra for the convolved network.
+- [cclyapayne_training_spectra_raw.npz](https://lambda.uchicago.edu/~hchen/public/CCLya/cclya_training_spectra_raw.npz): Training spectra for the raw network (unconvolved).
+- [cclyapayne_validation_spectra_raw.npz](https://lambda.uchicago.edu/~hchen/public/CCLya/cclya_validation_spectra_raw.npz): Validation spectra for the raw network (unconvolved).
 
 These spectra were generated using the **TLAC** radiative transfer code and are essential for training and evaluating the neural network in **CCLya-Payne**.
 
