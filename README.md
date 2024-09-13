@@ -6,9 +6,9 @@
 ### Installation
 ```bash
 cd ~
-git clone https://github.com/highzclouds/CCLya-Payne
+git clone git@github.com:highzclouds/CCLya-Payne.git
 cd CCLya-Payne
-sudo python3 setup.py install 
+sudo pip install . 
 ```
 
 ### Features
