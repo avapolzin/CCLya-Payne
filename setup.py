@@ -3,7 +3,7 @@ from setuptools import setup
 setup(name='CCLya-Payne',
       version='1.1',
       description='Tools for emulating Lyman-alpha profiles with neural networks.',
-      author='Erik Solhaug',
+      author='Erik Solhaug, Hsiao-Wen Chen',
       author_email='eriksolhaug@uchicago.edu',
       license='MIT',
       url='https://github.com/highzclouds/CCLya-Payne',
