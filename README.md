@@ -6,7 +6,7 @@
 ### Installation
 ```bash
 cd ~
-git clone git@github.com:highzclouds/CCLya-Payne.git
+git clone https://github.com:highzclouds/CCLya-Payne
 cd CCLya-Payne
 sudo pip install . 
 ```
