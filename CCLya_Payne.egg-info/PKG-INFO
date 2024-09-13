@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: CCLya-Payne
+Version: 1.1
+Summary: Tools for emulating Lyman-alpha profiles with neural networks.
+Home-page: https://github.com/highzclouds/CCLya-Payne
+Author: Erik Solhaug, Hsiao-Wen Chen
+Author-email: eriksolhaug@uchicago.edu
+License: MIT
+License-File: LICENSE
+Requires-Dist: torch
+Requires-Dist: torchvision
+Requires-Dist: math
+Requires-Dist: pickle
+Requires-Dist: os
+Requires-Dist: numpy
+Requires-Dist: time
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: emcee
+Requires-Dist: corner
+Requires-Dist: scipy
+Requires-Dist: radam@ git+https://github.com/LiyuanLucasLiu/RAdam.git
