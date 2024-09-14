@@ -8,12 +8,21 @@
 cd ~
 git clone https://github.com:highzclouds/CCLya-Payne
 ```
-Before proceeding, download the files referenced in README_DATA.md and move them into CCLya-Payne/ccyla_payne/data.Then you can proceed with installing the python package as below. 
+*If you _are not_ going to train your own neural network*:
+```bash
+cd CCLya-Payne
+sudo pip install .
+```
+
+*If you _are_ planning to train your own neural network*: Before proceeding, download the files referenced in README_DATA.md and move them into CCLya-Payne/ccyla_payne/data. Then you can proceed with installing the python package as below. 
 
 ```bash
 cd CCLya-Payne
-sudo pip install . 
+sudo pip install -e .[training] 
 ```
+
+If you are using `zsh` and would like to install the extra training features, note that you will need to use the command `sudo pip install -e ".[training]"` or the command `sudo pip install -e .\[training\]` instead.
+
 
 ### Features
 - Generate Lyα profiles quickly for a given set of input parameters across continuous parameter spaces.
