@@ -3,7 +3,7 @@
 import pickle
 import os
 
-from .cclya_payne import utils
+from cclya_payne import utils
 #import cclya_payne.utils
 
 def fit_lya(obs_x, obs_y, obs_err, num_walkers=50, num_steps=50, discard=10, thin=5, guess_file='guess.txt', prior_file='prior.txt', save_dir=os.getcwd()):
