@@ -9,4 +9,5 @@ setuptools.setup(name='CCLya-Payne',
       url='https://github.com/highzclouds/CCLya-Payne',
       packages=['cclya_payne', 'cclya_payne/fitting', 'cclya_payne/training', 'cclya_payne/utils'],
       package_data={'cclya_payne':['data/*']},
-      install_requires=['torch', 'torchvision', 'numpy', 'pandas', 'matplotlib', 'emcee', 'corner', 'scipy','radam @ git+https://github.com/LiyuanLucasLiu/RAdam.git'])
+      install_requires=['numpy', 'pandas', 'matplotlib', 'emcee', 'corner', 'scipy'],
+      extras_require = {'training':['torch', 'torchvision', 'radam @ git+https://github.com/LiyuanLucasLiu/RAdam.git']})
