@@ -87,4 +87,5 @@ If you use any of these tools in published work, please cite the following paper
 
 ### Authors
 - [Erik Solhaug](https://astrophysics.uchicago.edu/people/profile/erik-solhaug/) (The University of Chicago) --- eriksolhaug at uchicago dot edu
-- [Hsiao-Wen Chen](https://astrophysics.uchicago.edu/people/profile/hsiao-wen-chen/) (The University of Chicago)
+- [Ava Polzin](https://astrophysics.uchicago.edu/people/profile/ava-polzin/) (The University ofChicago) --- apolzin at uchicago dot edu
+- [Hsiao-Wen Chen](https://astrophysics.uchicago.edu/people/profile/hsiao-wen-chen/) (The University of Chicago) --- hwchen at uchicago dot edu
