@@ -1,7 +1,7 @@
 # CCLya-Payne: Neural Network Emulation of Lyman-alpha Profiles
 [![DOI](https://zenodo.org/badge/624616131.svg)](https://zenodo.org/doi/10.5281/zenodo.13755691)
 
-**CCLya-Payne** (**C**ode for **C**ontinuous **Ly**man-**a**lpha **P**rofile **A**nal**Y**sis via **N**eural **E**mulation) is a neural network designed to emulate Lyman-alpha (Lyα) profiles from radiative transfer simulations. The network is trained on synthetic spectra convolved with the instrumental point spread function (PSF) of the Magellan MIKE echelle spectrograph (10 km/s resolution). With this tool, you can quickly generate Lyα profiles based on a set of input parameters that describe intrinsic dynamics and physical conditions of the source.
+**CCLya-Payne** (**C**ode for **C**ontinuous **Ly**man-**a**lpha **P**rofile **A**nal**Y**sis via **N**eural **E**mulation) is a neural network designed to emulate Lyman-alpha (Lyα) profiles from radiative transfer simulations. The network is trained on synthetic spectra convolved with the instrumental line spread function (LSF) of the Magellan MIKE echelle spectrograph (10 km/s resolution). With this tool, you can quickly generate Lyα profiles based on a set of input parameters that describe intrinsic dynamics and physical conditions of the source.
 
 ### Installation
 ```bash
@@ -60,7 +60,7 @@ There are two versions of the neural network available:
 
 
 ### Training Data
-The neural network is trained on simulated Lyα spectra produced by the **TLAC** radiative transfer code (Gronke et al. 2015). These spectra are convolved with the PSF of the Magellan MIKE instrument to match the resolution of high-resolution spectroscopic data (10 km/s). If you wish to apply the neural network to other instruments, you may want to use the training.py package to train the neural network on the training data convolved to match the PSF of the instrument you're using, or change this code to convolve each neural network-produced model to match the PSF of your instrument.
+The neural network is trained on simulated Lyα spectra produced by the **TLAC** radiative transfer code (Gronke et al. 2015). These spectra are convolved with the LSF of the Magellan MIKE instrument to match the resolution of high-resolution spectroscopic data (10 km/s). If you wish to apply the neural network to other instruments, you may want to use the training.py package to train the neural network on the training data convolved to match the LSF of the instrument you're using, or change this code to convolve each neural network-produced model to match the LSF of your instrument.
 
 **Note:** Due to GitHub's file size limitations, the training and validation spectra used for the neural network are hosted externally. To download these data files, please refer to the [README_DATA.md](./README_DATA.md) file for the download link and instructions.
 
