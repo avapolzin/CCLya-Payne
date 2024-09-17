@@ -6,7 +6,7 @@
 ### Installation
 ```bash
 cd ~
-git clone https://github.com:highzclouds/CCLya-Payne
+git clone https://github.com/highzclouds/CCLya-Payne
 ```
 *If you _are not_ going to train your own neural network*:
 ```bash
