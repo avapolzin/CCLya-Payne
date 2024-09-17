@@ -29,8 +29,8 @@ If you are using `zsh` and would like to install the extra training features, no
 - Fit Lyα models to observed spectra.
 
 **Input Parameters**
-- **Intrinsic dynamics** (σ<sub>int</sub>): sets the intrinsic velocity dispersion of the Lya photons from the emitting source [as sigma_int/(km * s<sup>-1</sup>)]. The photons are sampled from a Gaussian with this width.
-- **Neutral hydrogen column density** (logN<sub>HI</sub>): sets the overall column density of the shell model [as log(N_HI / cm<sup>-2</sup>)].
+- **Intrinsic dynamics** (σ<sub>int</sub>): sets the intrinsic velocity dispersion of the Lya photons from the emitting source [as sigma<sub>int</sub>/(km * s<sup>-1</sup>)]. The photons are sampled from a Gaussian with this width.
+- **Neutral hydrogen column density** (logN<sub>HI</sub>): sets the overall column density of the shell model [as log(N<sub>HI</sub> / cm<sup>-2</sup>)].
 - **Expansion velocity** (v<sub>exp</sub>): sets the inflow/outflow velocity of the shell [as v<sub>exp</sub>/(km * s<sup>-1</sup>)]. This is uniform throughout the shell.
 - **Effective temperature** (logT): sets the temperature for the combined thermal and bulk motion of the hydrogen [as log(T / K)].
 
