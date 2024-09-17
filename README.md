@@ -60,14 +60,14 @@ There are two versions of the neural network available:
 
    To adapt this network for different instruments, you need to convolve the network outputs with a Gaussian kernel matching your instrument's LSF. Alternatively, you can modify the `get_neural_network` module to load this raw-trained network and then apply the convolution as needed.
 
-*When modifying any of the code, ensure that your changes are reflected by reinstalling the package in editable mode. This allows your updates to take effect without needing to reinstall the package entirely. To do this, navigate to the `CCLya-Payne` directory and run the following command:*
+<!--- *When modifying any of the code, ensure that your changes are reflected by reinstalling the package in editable mode. This allows your updates to take effect without needing to reinstall the package entirely. To do this, navigate to the `CCLya-Payne` directory and run the following command:*
 
 ```bash
 sudo pip install -e .
 ```
 
 *This is needed e.g. when editing the paths to the two versions of the neural network above in the `utils.py` module.*
-
+--->
 
 
 ### Training Data
