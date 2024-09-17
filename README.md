@@ -56,7 +56,17 @@ There are two versions of the neural network available:
    - Validation Spectra: `cclya_validation_spectra_raw.npz`
    - Training Loss: `cclya_training_loss_raw.npz`
 
+   Both versions use the `cclya_wavelength.npz` file for the velocity (x-values) corresponding to the flux (y-values) of the neural network training and validation spectra.
+
    To adapt this network for different instruments, you need to convolve the network outputs with a Gaussian kernel matching your instrument's LSF. Alternatively, you can modify the `get_neural_network` module to load this raw-trained network and then apply the convolution as needed.
+
+*When modifying any of the code, ensure that your changes are reflected by reinstalling the package in editable mode. This allows your updates to take effect without needing to reinstall the package entirely. To do this, navigate to the `CCLya-Payne` directory and run the following command:*
+
+```bash
+sudo pip install -e .
+```
+
+
 
 
 ### Training Data
@@ -70,14 +80,14 @@ This repository contains several modules and files that support the neural netwo
 - **`utils.py`**: Helper functions for data processing and analysis.
 - **`fitting.py`**: Functions for fitting Lyα profiles to observed spectra.
 - **`training.py`**: Scripts and methods for training the neural network on synthetic spectra.
-- **`radam.py`**: An implementation of the Rectified Adam optimizer used in the training process.
+- **`radam.py`**: An implementation of the Rectified Adam optimizer used in the training process. Installed when running `sudo pip install -e .[training]` (see Installation section).
 
 ### Getting Started
 To get started with fitting Lyα profiles to observed spectra:
-1. CCLya-Payne works with Lyα profiles in velocity-space. You will need to convert your observed spectra to velocity-space before fitting.
-2. Follow the steps outlined in the **`tutorial.ipynb`** Jupyter notebook for a quick guide on how to run the code and perform fits. A sample spectrum and fitting is included.
-3. Modify the **`guess.txt`** and **`priors.txt`** files to set your initial parameter guesses and parameter priors.
-4. Fitting will produce a few files in the ./mcmc directory. Inspect these file sto make sure your fitting is working as expected.
+1. CCLya-Payne works with Lyα profiles in velocity-space. You will need to convert your observed spectra to velocity-space in the range (-1400, 1400) km/s before fitting.
+2. Follow the steps outlined in the **`tutorial.ipynb`** Jupyter notebook in the `./tutorial` directory for a quick guide on how to run the code and perform fits. A sample spectrum and fitting is included.
+3. Modify the **`guess.txt`** and **`priors.txt`** files in the `./tutorial` directory to set your initial parameter guesses and parameter priors.
+4. Fitting will produce a few files in the `./tutorial/mcmc` directory. Inspect these files to make sure your fitting is working as expected.
 
 ### Citations and references
 If you use any of these tools in published work, please cite the following papers.
