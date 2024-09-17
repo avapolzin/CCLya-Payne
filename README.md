@@ -66,6 +66,7 @@ There are two versions of the neural network available:
 sudo pip install -e .
 ```
 
+*This is needed e.g. when editing the paths to the two versions of the neural network above in the `utils.py` module.*
 
 
 
