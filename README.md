@@ -1,5 +1,5 @@
 # CCLya-Payne: Neural Network Emulation of Lyman-alpha Profiles
-[![DOI](https://zenodo.org/badge/624616131.svg)](https://zenodo.org/doi/10.5281/zenodo.13755691)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13776943.svg)](https://doi.org/10.5281/zenodo.13776943)
 
 **CCLya-Payne** (**C**ode for **C**ontinuous **Ly**man-**a**lpha **P**rofile **A**nal**Y**sis via **N**eural **E**mulation) is a neural network designed to emulate Lyman-alpha (Lyα) profiles from radiative transfer simulations. The network is trained on synthetic spectra convolved with the instrumental line spread function (LSF) of the Magellan MIKE echelle spectrograph (10 km/s resolution). With this tool, you can quickly generate Lyα profiles based on a set of input parameters that describe intrinsic dynamics and physical conditions of the source.
 
